@@ -1,7 +1,5 @@
 package confic;
 
-import domains.Answer;
-import domains.Questions;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
@@ -28,7 +26,7 @@ public class HibernateConfigurer {
                 Properties settings = new Properties();
 
                 settings.put(Environment.DRIVER, "org.postgresql.Driver");
-                settings.put(Environment.URL, "jdbc:postgresql://localhost:5432/quiz");
+                settings.put(Environment.URL, "jdbc:postgresql://localhost:5432/postgres");
                 settings.put(Environment.USER, "postgres");
                 settings.put(Environment.PASS, "1235");
                 settings.put(Environment.SHOW_SQL, "true");
@@ -59,9 +57,9 @@ public class HibernateConfigurer {
                 Reflections reflections = new Reflections("domains");
                 reflections.get(SubTypes.of(TypesAnnotated.with(Entity.class)).asClass())
                         .forEach(sources::addAnnotatedClass);
-
-                sources.addAnnotatedClass(Questions.class);
-                sources.addAnnotatedClass(Answer.class);
+//
+//                sources.addAnnotatedClass(Questions.class);
+//                sources.addAnnotatedClass(Answer.class);
 
                 // Create Metadata
                 Metadata metadata = sources.getMetadataBuilder().build();

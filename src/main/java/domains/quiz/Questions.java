@@ -1,4 +1,4 @@
-package domains;
+package domains.quiz;
 
 import confic.HibernateConfigurer;
 import jakarta.persistence.*;

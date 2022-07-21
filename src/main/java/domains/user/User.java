@@ -18,7 +18,7 @@ import java.sql.Timestamp;
 @ToString
 @EqualsAndHashCode
 @Entity
-@Table(schema = "users", name = "users")
+@Table(schema = "quiz", name = "users")
 public class User {
 
     @Id

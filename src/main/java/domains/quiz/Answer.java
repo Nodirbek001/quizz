@@ -1,5 +1,6 @@
-package domains;
+package domains.quiz;
 
+import domains.quiz.Questions;
 import jakarta.persistence.*;
 import lombok.*;
 
