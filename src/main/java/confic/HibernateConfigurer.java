@@ -1,5 +1,8 @@
 package confic;
 
+import domains.quiz.Answer;
+import domains.quiz.Questions;
+import domains.user.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
@@ -26,9 +29,9 @@ public class HibernateConfigurer {
                 Properties settings = new Properties();
 
                 settings.put(Environment.DRIVER, "org.postgresql.Driver");
-                settings.put(Environment.URL, "jdbc:postgresql://localhost:5432/postgres");
+                settings.put(Environment.URL, "jdbc:postgresql://localhost:5432/quiz");
                 settings.put(Environment.USER, "postgres");
-                settings.put(Environment.PASS, "1235");
+                settings.put(Environment.PASS, "12345");
                 settings.put(Environment.SHOW_SQL, "true");
                 settings.put(Environment.HBM2DDL_AUTO, "update");
                 settings.put(Environment.FORMAT_SQL, "true");
@@ -54,12 +57,9 @@ public class HibernateConfigurer {
                 // Create MetadataSources
                 MetadataSources sources = new MetadataSources(registry);
 
-                Reflections reflections = new Reflections("domains");
-                reflections.get(SubTypes.of(TypesAnnotated.with(Entity.class)).asClass())
-                        .forEach(sources::addAnnotatedClass);
-//
-//                sources.addAnnotatedClass(Questions.class);
-//                sources.addAnnotatedClass(Answer.class);
+                sources.addAnnotatedClass(Questions.class);
+                sources.addAnnotatedClass(Answer.class);
+                sources.addAnnotatedClass(User.class);
 
                 // Create Metadata
                 Metadata metadata = sources.getMetadataBuilder().build();

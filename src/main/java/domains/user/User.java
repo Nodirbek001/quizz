@@ -18,7 +18,7 @@ import java.sql.Timestamp;
 @ToString
 @EqualsAndHashCode
 @Entity
-@Table(schema = "quiz", name = "users")
+@Table(schema = "public", name = "users")
 public class User {
 
     @Id
@@ -46,7 +46,8 @@ public class User {
     private boolean isDeleted = false;
 
     @Column
-    private Blocking blocking;
+    @Builder.Default
+    private Blocking blocking = new Blocking();
 
     public enum Gender{
         Female,

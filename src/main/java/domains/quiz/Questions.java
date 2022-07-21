@@ -14,18 +14,12 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(schema = "quiz")
+@Table(schema = "public")
 public class Questions {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String text;
-    @OneToMany(targetEntity = Answer.class,
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
-            mappedBy = "answer"
-    )
-    private List<Answer> answers;
 
     private int ball;
 
@@ -53,7 +47,6 @@ public class Questions {
                 .language(Language.UZ)
                 .text("savol1").build();
        answers1.forEach(answer -> {
-           answer.setQuestions(questions);
            session.persist(answer);
        });
         session.getTransaction().commit();

@@ -10,14 +10,11 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(schema = "quiz")
+@Table(schema = "public")
 public class Answer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String text;
     private boolean isCorrect;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "question_id")
-    private Questions questions;
 }
