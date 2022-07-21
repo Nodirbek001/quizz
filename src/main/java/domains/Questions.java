@@ -1,6 +1,6 @@
 package domains;
 
-import confic.HibernateJavaConfigurer;
+import confic.HibernateConfigurer;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Session;
@@ -34,7 +34,7 @@ public class Questions {
 
 
     public static void main(String[] args) {
-        SessionFactory sessionFactory= HibernateJavaConfigurer.getSessionFactory();
+        SessionFactory sessionFactory= HibernateConfigurer.getSessionFactory();
         Session session=sessionFactory.openSession();
         session.getTransaction().begin();
         List<Answer> answers1= List.of(

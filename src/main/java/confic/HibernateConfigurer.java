@@ -1,6 +1,7 @@
 package confic;
 
-import jakarta.persistence.Entity;
+import domains.Answer;
+import domains.Questions;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
@@ -9,12 +10,13 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Environment;
 import org.reflections.Reflections;
 
+import javax.swing.text.html.parser.Entity;
 import java.util.Properties;
 
 import static org.reflections.scanners.Scanners.SubTypes;
 import static org.reflections.scanners.Scanners.TypesAnnotated;
 
-public class HibernateJavaConfigurer {
+public class HibernateConfigurer {
     private static StandardServiceRegistry registry;
     private static SessionFactory sessionFactory;
 
@@ -25,13 +27,13 @@ public class HibernateJavaConfigurer {
 
                 Properties settings = new Properties();
 
-                    settings.put(Environment.DRIVER, "org.postgresql.Driver");
-                    settings.put(Environment.URL, "jdbc:postgresql://localhost:5432/quiz");
-                    settings.put(Environment.USER, "postgres");
-                    settings.put(Environment.PASS, "12345");
-                    settings.put(Environment.SHOW_SQL, "true");
-                    settings.put(Environment.HBM2DDL_AUTO, "update");
-                    settings.put(Environment.FORMAT_SQL, "true");
+                settings.put(Environment.DRIVER, "org.postgresql.Driver");
+                settings.put(Environment.URL, "jdbc:postgresql://localhost:5432/quiz");
+                settings.put(Environment.USER, "postgres");
+                settings.put(Environment.PASS, "1235");
+                settings.put(Environment.SHOW_SQL, "true");
+                settings.put(Environment.HBM2DDL_AUTO, "update");
+                settings.put(Environment.FORMAT_SQL, "true");
 
 
                 // HikariCP settings
@@ -55,10 +57,11 @@ public class HibernateJavaConfigurer {
                 MetadataSources sources = new MetadataSources(registry);
 
                 Reflections reflections = new Reflections("domains");
-
                 reflections.get(SubTypes.of(TypesAnnotated.with(Entity.class)).asClass())
                         .forEach(sources::addAnnotatedClass);
 
+                sources.addAnnotatedClass(Questions.class);
+                sources.addAnnotatedClass(Answer.class);
 
                 // Create Metadata
                 Metadata metadata = sources.getMetadataBuilder().build();
