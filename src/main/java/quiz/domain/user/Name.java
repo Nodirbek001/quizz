@@ -1,4 +1,4 @@
-package domains.user;
+package quiz.domain.user;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;

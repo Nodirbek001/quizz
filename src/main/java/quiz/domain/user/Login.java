@@ -1,9 +1,10 @@
-package domains.user;
-
+package quiz.domain.user;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import lombok.*;
+import org.hibernate.annotations.ColumnTransformer;
+import org.hibernate.annotations.NaturalId;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,6 +16,7 @@ import lombok.*;
 @Embeddable
 public class Login {
 
+    @NaturalId
     @Column(unique = true, nullable = false)
     private String username;
 

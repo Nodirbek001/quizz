@@ -1,7 +1,8 @@
-package utils;
+package quiz;
 
 
-import ui.UI;
+import quiz.ui.UI;
+
 
 public class App {
     public static void main(String[] args) {
