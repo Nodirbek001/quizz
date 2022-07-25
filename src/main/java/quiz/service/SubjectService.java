@@ -18,6 +18,11 @@ public class SubjectService implements Service<Subject>{
 
     }
 
+    @Override
+    public Response<Subject> delete(Subject domain) {
+        return null;
+    }
+
     public static SubjectService getInstance() {
         if (instance==null) {
             instance=new SubjectService();

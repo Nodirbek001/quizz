@@ -1,9 +1,6 @@
 package quiz.domain.answer;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import quiz.domain.Auditable;
 import quiz.domain.question.Question;
@@ -24,6 +21,6 @@ public class Answer extends Auditable {
     @Builder.Default
     private boolean correct = false;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Question question;
 }

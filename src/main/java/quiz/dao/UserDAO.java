@@ -10,11 +10,11 @@ import quiz.response.Response;
 public class UserDAO extends GenericDAO<User>{
     private static UserDAO instance;
 
-    public Response<User> getByUsername(String username){
+    public static Response<User> getByUsername(String i_username){
         Session session = HibernateConfigurer.getSessionFactory().openSession();
         session.getTransaction().begin();
-        User result = session.createQuery("select t from User t where t.login.username = ?1", User.class)
-                .setParameter(1, username).getSingleResult();
+        User result = session.createQuery("select t from User t where t.login.username = :usernama", User.class)
+                .setParameter("usernama", i_username).getSingleResult();
         session.getTransaction().commit();
         session.close();
         return new Response<>(result);

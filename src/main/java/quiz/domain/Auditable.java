@@ -25,7 +25,7 @@ public class Auditable {
     @Column(updatable = false, name = "created_at")
     private Timestamp createdAt;
 
-    @Convert(converter = NumericBooleanConverter.class)
+//    @Convert(converter = NumericBooleanConverter.class)
     @Column
     @Builder.Default
     private boolean deleted = false;

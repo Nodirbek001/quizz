@@ -20,6 +20,11 @@ public class UserService implements Service<User> {
         }
     }
 
+    @Override
+    public Response<User> delete(User domain) {
+        return null;
+    }
+
     public Response<User> signIn(Login login) {
         try {
             Response<User> response = UserDAO.getInstance().getByUsername(login.getUsername());

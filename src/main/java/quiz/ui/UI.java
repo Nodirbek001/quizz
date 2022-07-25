@@ -66,7 +66,7 @@ public class UI {
         }
     }
 
-    private static void subjectCreate() {
+    public static void subjectCreate() {
         Response<Subject> response = SubjectDAO.getInstance().create(Subject.builder()
                 .name(Reader.readLine("Subject name: "))
                 .build());

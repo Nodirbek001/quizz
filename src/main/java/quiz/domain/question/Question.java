@@ -1,10 +1,7 @@
 package quiz.domain.question;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import quiz.domain.Auditable;
 import quiz.domain.answer.Answer;
@@ -30,6 +27,6 @@ public class Question extends Auditable {
     private Subject subject;
 
     @Builder.Default
-    @OneToMany(mappedBy = "question")
+    @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
     private ArrayList<Answer> answers = new ArrayList<>();
 }

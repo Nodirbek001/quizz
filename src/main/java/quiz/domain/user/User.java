@@ -44,8 +44,6 @@ public class User extends Auditable implements Domain {
     @Builder.Default
     private Score score = new Score();
 
-    //--------------------------------------------------------------------
-
     public enum Gender{
         Female('F'),
         Male('M');

@@ -5,4 +5,5 @@ import quiz.response.Response;
 
 public interface Service<D extends Domain> {
     Response<D> create(D domain);
+    Response<D> delete(D domain);
 }

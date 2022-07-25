@@ -1,9 +1,6 @@
 package quiz.domain.subject;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import quiz.domain.Auditable;
 import quiz.domain.Domain;
@@ -24,6 +21,6 @@ public class Subject extends Auditable implements Domain {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "subject")
+    @OneToMany(targetEntity = Question.class, mappedBy = "subject",cascade = CascadeType.ALL)
     private ArrayList<Question> questions;
 }
